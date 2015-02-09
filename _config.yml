@@ -104,7 +104,7 @@ stylus:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  message: :year/:month/:day/message
+  message: 2015年2月9日15:18:15
   repo:
     github: git@github.com:caolinjian/blog.git,gh-pages
-    coding: git@coding.net:caolinjian/blog.git,gh-pages
+#    coding: git@coding.net:caolinjian/blog.git,gh-pages
