@@ -103,6 +103,8 @@ stylus:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: github
-  repository: git@github.com:caolinjian/blog.git
-  branch: gh-pages
+  type: git
+  message: :year/:month/:day/message
+  repo:
+    github: git@github.com:caolinjian/blog.git,gh-pages
+    coding: git@coding.net:caolinjian/blog.git,gh-pages
