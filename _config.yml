@@ -5,7 +5,7 @@
 # Site
 title: 曹林剑的博客
 subtitle: You can't leave this world to the people you despise.
-description: 曹林剑 博客 caolinjian blog v0.0.1
+description: 曹林剑 博客 caolinjian blog v0.0.2
 author: Cao LinJian
 email: 307296756@qq.com
 language: zh-CN
@@ -105,6 +105,5 @@ stylus:
 deploy:
   type: git
   message: 2015年2月9日15:18:15
-  repo:
-    github: git@github.com:caolinjian/blog.git,gh-pages
+  repo: git@github.com:caolinjian/blog.git,gh-pages
 #    coding: git@coding.net:caolinjian/blog.git,gh-pages
