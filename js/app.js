@@ -102,8 +102,6 @@
   }
 
 
-  ///////////////////
-
   function filterPosts(data, keywords) {
     var results = [];
 
