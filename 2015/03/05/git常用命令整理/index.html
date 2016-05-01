@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>git常用命令整理 | Ph0eN_X&#39;s Localhost</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="git,git命令," />
+  
+
+  <meta name="description" content="好记性不如烂博客,整理了下一些常用的命令之后有用到更多的再慢慢更新
+配置全局变量12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+$ git config --global color.ui true显示颜色">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令整理">
+<meta property="og:url" content="http://caolinjian.github.io/blog/2015/03/05/git常用命令整理/index.html">
+<meta property="og:site_name" content="Ph0eN_X's Localhost">
+<meta property="og:description" content="好记性不如烂博客,整理了下一些常用的命令之后有用到更多的再慢慢更新
+配置全局变量12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+$ git config --global color.ui true显示颜色">
+<meta property="og:updated_time" content="2015-03-10T06:05:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git常用命令整理">
+<meta name="twitter:description" content="好记性不如烂博客,整理了下一些常用的命令之后有用到更多的再慢慢更新
+配置全局变量12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;
+$ git config --global color.ui true显示颜色">
+
+  
+
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+
+  <link href="/blog//css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1254595041'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1254595041' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">菜单</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">菜单</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置全局变量"><span class="toc-number">1.</span> <span class="toc-text">配置全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置别名"><span class="toc-number">2.</span> <span class="toc-text">配置别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看日志"><span class="toc-number">3.</span> <span class="toc-text">查看日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">4.</span> <span class="toc-text">版本回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销修改"><span class="toc-number">4.1.</span> <span class="toc-text">撤销修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-number">5.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关联远程仓库"><span class="toc-number">5.1.</span> <span class="toc-text">关联远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送远程仓库"><span class="toc-number">5.2.</span> <span class="toc-text">推送远程仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理"><span class="toc-number">6.</span> <span class="toc-text">分支管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#贮藏当前未提交的工作"><span class="toc-number">6.1.</span> <span class="toc-text">贮藏当前未提交的工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多人协作"><span class="toc-number">6.2.</span> <span class="toc-text">多人协作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签"><span class="toc-number">7.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他常用命令"><span class="toc-number">8.</span> <span class="toc-text">其他常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#提交到多个远程仓库"><span class="toc-number">8.1.</span> <span class="toc-text">提交到多个远程仓库</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-git常用命令整理" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">git常用命令整理</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.03.05</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Cao LinJian</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/blog/categories/git/">git</a>
+  </span>
+
+
+
+      
+      
+          <span>
+            <i class="icon-calendar"></i>
+            <span>编辑于:2015.03.10</span>
+          </span>
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>好记性不如烂博客,整理了下一些常用的命令<br>之后有用到更多的再慢慢更新</p>
+<h2 id="配置全局变量"><a href="#配置全局变量" class="headerlink" title="配置全局变量"></a>配置全局变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p><code>$ git config --global color.ui true</code>显示颜色<br><a id="more"></a></p>
+<h2 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.st status</span><br><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line">$ git config --global alias.br branch</span><br></pre></td></tr></table></figure>
+<p><code>$ git config --global alias.last &#39;log -1&#39;</code>最近一次提交<br>配置的内容都保存在<code>.git/config</code>中的</p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p><code>$ git log --pretty=oneline</code> 按Q退出<br><code>$ git log --stat -n</code> <code>--stat</code>显示简要的增改行数统计,每次提交文件的变更统计<code>-n</code>前n条<br><code>$ git log --pretty=format:&quot; &quot;</code>控制显示的记录格式，常用的格式占位符写法及其代表的意义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">选项	 说明</span><br><span class="line">%H	提交对象（commit）的完整哈希字串</span><br><span class="line">%h	提交对象的简短哈希字串</span><br><span class="line">%T	树对象（tree）的完整哈希字串</span><br><span class="line">%t	树对象的简短哈希字串</span><br><span class="line">%P	父对象（parent）的完整哈希字串</span><br><span class="line">%p	父对象的简短哈希字串</span><br><span class="line">%an	作者（author）的名字</span><br><span class="line">%ae	作者的电子邮件地址</span><br><span class="line">%ad	作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">%ar	作者修订日期，按多久以前的方式显示</span><br><span class="line">%cn	提交者(committer)的名字</span><br><span class="line">%ce	提交者的电子邮件地址</span><br><span class="line">%cd	提交日期</span><br><span class="line">%cr	提交日期，按多久以前的方式显示</span><br><span class="line">%s	提交说明</span><br></pre></td></tr></table></figure>
+<p>如<code>$ git log --pretty=format:&quot;%h -%an,%ar : %s&quot; -3</code><br>利用上面的配置别名咱们可以<br>git config –global alias.lg “log –color –graph<br>–pretty=format:’%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset’ –abbrev-commit”<br>然后<code>git lg</code> 记得用<code>q</code>退出<br><code>$ gitk</code>打开图形界面<br><code>$ git log --help</code>查看帮助</p>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p><code>$ git reset --hard HEAD^</code><br>用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br><code>$ git reset --hard 3628164</code>可以指定回到某个版本,不用写全版本号。<br><code>$ git reflog</code>可以记录之前的命令，回退之后想要回到新版本可以用它来查到版本号</p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p><code>$ git checkout -- readme.txt</code>文件在缓存区时可撤销修改<br><code>$ git rm</code>掉的也可以用上述命令回复</p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>创建SSH key<code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
+<h3 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h3><p><code>$ git remote add origin git@github.com:***/***.git</code></p>
+<h3 id="推送远程仓库"><a href="#推送远程仓库" class="headerlink" title="推送远程仓库"></a>推送远程仓库</h3><p><code>$ git push -u origin master</code>第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p><code>$ git branch -a</code>查看所有分支 -r查看远程分支<br><code>$ git checkout -b dev</code>创建<br><code>$ git merge dev</code>合并<br><code>$ git branch -d dev</code>删除</p>
+<h3 id="贮藏当前未提交的工作"><a href="#贮藏当前未提交的工作" class="headerlink" title="贮藏当前未提交的工作"></a>贮藏当前未提交的工作</h3><p><code>$ git stash``
+</code>$ git stash list<code>查看</code>$ git stash pop<code>恢复并删除</code>$ git stash apply stash@{0}`恢复到指定空间</p>
+<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><p><code>$ git remote -v</code>查看远程库<br><code>$ git checkout -b dev origin/dev</code>创建远程分支对应的本地分支<br><code>$ git branch --set-upstream branch-name origin/branch-name</code>建立关联</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><code>$ git tag v1.0</code>创建标签，标签是关联到当前commit上的。加上commit id可以关联到对应commit上<br><code>$ git tag</code> 查看标签<br><code>$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 3628164</code>用-a指定标签名，-m指定说明文字<br><code>$ git tag -d v0.1</code>删除标签<br><code>git push origin &lt;tagname&gt;</code>推送标签<br><code>$ git push origin --tags</code>推送所有标签<br>删除远程标签要先删除本地再<code>$ git push origin :refs/tags/v0.9</code></p>
+<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><p><code>$ git commit -C HEAD -a —amend</code>复用HEAD留言，增补提交<br><code>$ git blame hello.html</code> 查明谁修改了代码 你也可以用”-L”参数在命令(blame)中指定开始和结束行:<br><code>$ git blame -L 12,+10 hello.html</code> //12到22行<br><code>$ git gc</code>回收垃圾<br><code>$ git push --delete origin dev</code>删除远程分支<br><code>git remote add company  https://github.com/....</code>关联多个远程仓库</p>
+<h3 id="提交到多个远程仓库"><a href="#提交到多个远程仓库" class="headerlink" title="提交到多个远程仓库"></a>提交到多个远程仓库</h3><p><code>.git/config</code>配置url`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;all&quot;]  </span><br><span class="line">    url = https://github.com/caolinijan/test.git  </span><br><span class="line">    url = https://git.oschina.net/caolinjian/test.git</span><br></pre></td></tr></table></figure>
+<p><code>$ git push test --all</code></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://caolinjian.github.io/blog/2015/03/05/git常用命令整理/index.html" data-title="git常用命令整理" data-url="http://caolinjian.github.io/blog/2015/03/05/git常用命令整理/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"caolinjian"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/blog//js/bundle.js?2356833', function() {
+    });
+  }
+</script>
+
+</body>
+</html>
