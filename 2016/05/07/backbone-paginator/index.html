@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Ph0eN_X's Localhost">
 <meta property="og:description" content="一个Backbone项目中使用的简单组件Model分页最基本的需要4个参数,size,page,total已经pageChange. 这里的showPageA表示最多显示的按钮个数,pageChange的函数在生成实力时传入.
 12345678var PanigatorModel = Backbone.Model.extend(&amp;#123;    defaults: &amp;#123;        s">
-<meta property="og:updated_time" content="2016-05-07T14:31:25.000Z">
+<meta property="og:updated_time" content="2017-03-07T09:18:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="backbone paginator">
 <meta name="twitter:description" content="一个Backbone项目中使用的简单组件Model分页最基本的需要4个参数,size,page,total已经pageChange. 这里的showPageA表示最多显示的按钮个数,pageChange的函数在生成实力时传入.
@@ -47,6 +47,22 @@
   
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1254595041'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1254595041' type='text/javascript'%3E%3C/script%3E"));</script>
 
+
+  <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'afcea90a8b7d8e63']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
 
 </head>
 
@@ -126,7 +142,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个Backbone项目中使用的简单组件"><span class="toc-number">1.</span> <span class="toc-text">一个Backbone项目中使用的简单组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">1.2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-number">1.3.</span> <span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结语"><span class="toc-number">1.4.</span> <span class="toc-text">结语</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一个Backbone项目中使用的简单组件"><span class="toc-number">1.</span> <span class="toc-text">一个Backbone项目中使用的简单组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">1.2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-number">1.3.</span> <span class="toc-text">完整代码</span></a></li></ol></li></ol>
   </div>
 
 
@@ -154,6 +170,11 @@
 
       
       
+          <span>
+            <i class="icon-calendar"></i>
+            <span>编辑于:2017.03.07</span>
+          </span>
+      
     </div>
   </header>
 
@@ -165,7 +186,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> PanigatorView = Backbone.View.extend(&#123;</span><br><span class="line">    el: <span class="string">'.pager'</span>,</span><br><span class="line">    events: &#123;</span><br><span class="line">        <span class="string">'click .pageA'</span>: <span class="string">'changePage'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    template: _.template($(<span class="string">'#paginator'</span>).html()),</span><br><span class="line">    initialize: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        self.setTotalPage();</span><br><span class="line">        self.model.bind(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.setTotalPage();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    changePage: <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(ev.currentTarget).hasClass(<span class="string">'disable'</span>)||$(ev.currentTarget).hasClass(<span class="string">'pageActive'</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.model.attributes.pageChange($(ev.currentTarget).data(<span class="string">'index'</span>))</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$el.html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.toJSON()));</span><br><span class="line">    &#125;,</span><br><span class="line">    setTotalPage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> showList = [];</span><br><span class="line">        <span class="keyword">var</span> totalPage = <span class="built_in">Math</span>.floor((<span class="keyword">this</span>.model.get(<span class="string">'total'</span>) - <span class="number">1</span>) / <span class="keyword">this</span>.model.get(<span class="string">'size'</span>)) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">var</span> currentPage = <span class="keyword">this</span>.model.get(<span class="string">'currentPage'</span>);</span><br><span class="line">        <span class="keyword">var</span> showPageA = <span class="keyword">this</span>.model.get(<span class="string">'showPageA'</span>);</span><br><span class="line">        <span class="keyword">if</span> (totalPage &lt;= showPageA || currentPage &lt; <span class="built_in">Math</span>.floor(showPageA / <span class="number">2</span>) + <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= totalPage &amp;&amp; showList.length &lt;= showPageA - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                showList.push(i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentPage &gt; totalPage - <span class="built_in">Math</span>.ceil(showPageA / <span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = totalPage; showList.length &lt;= showPageA - <span class="number">1</span>; i--) &#123;</span><br><span class="line">                showList.unshift(i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = currentPage - <span class="built_in">Math</span>.floor(showPageA / <span class="number">2</span>); i &lt;= currentPage + <span class="built_in">Math</span>.ceil(showPageA / <span class="number">2</span>) - <span class="number">1</span> &amp;&amp; showList.length &lt;= showPageA - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                showList.push(i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.model.set(<span class="string">'totalPage'</span>, totalPage);</span><br><span class="line">        <span class="keyword">this</span>.model.set(<span class="string">'showList'</span>, showList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><p><a href="https://github.com/caolinjian/express-myapp" target="_blank" rel="external">https://github.com/caolinjian/express-myapp</a> 这是一个简单的express应用在node版本0.10下运行<br>    $ node bin/www</p>
 <p>然后打开 <a href="http://127.0.0.1:4000/html/backbone-pager.html" target="_blank" rel="external">http://127.0.0.1:4000/html/backbone-pager.html</a> 对应的html文件在<br><a href="https://github.com/caolinjian/express-myapp/blob/master/public/html/backbone-pager.html" target="_blank" rel="external">https://github.com/caolinjian/express-myapp/blob/master/public/html/backbone-pager.html</a><br>banckbone-paginator的组件在 <a href="https://github.com/caolinjian/express-myapp/blob/master/public/javascripts/backbone-paginator.js" target="_blank" rel="external">https://github.com/caolinjian/express-myapp/blob/master/public/javascripts/backbone-paginator.js</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>写了个比较简单的分页组件,之后会经量完善下然后单独拎出来放到github,之前打算再写个vue的对应比较下,由于vue不能兼容ie8,这个计划改成了<br>用avalon了.</p>
 
     
   </div>
