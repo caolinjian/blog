@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>用D3js画爱心 | Ph0eN_X&#39;s Localhost</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,前端开发,前端工程师,frontend,nodejs,javascript,css" />
+  
+
+  <meta name="description" content="最近重新研究起D3，前些天刚好看到一个新的爱心函数，故拿来练练手
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用D3js画爱心">
+<meta property="og:url" content="http://caolinjian.github.io/blog/2017/03/08/用D3js画爱心/index.html">
+<meta property="og:site_name" content="Ph0eN_X's Localhost">
+<meta property="og:description" content="最近重新研究起D3，前些天刚好看到一个新的爱心函数，故拿来练练手
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788">
+<meta property="og:updated_time" content="2017-03-08T04:12:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用D3js画爱心">
+<meta name="twitter:description" content="最近重新研究起D3，前些天刚好看到一个新的爱心函数，故拿来练练手
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788">
+
+  
+
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+
+  <link href="/blog/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1254595041'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1254595041' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+  <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'afcea90a8b7d8e63']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">菜单</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/blog/">
+      <span class="toolbox-entry-text">菜单</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-用D3js画爱心" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">用D3js画爱心</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Cao LinJian</span>
+        </span>
+      
+
+      
+
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近重新研究起D3，前些天刚好看到一个新的爱心函数，故拿来练练手</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0, user-scalabel=no"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Heart<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">            svg &#123;</div><div class="line">                margin: auto;</div><div class="line">                display: block;</div><div class="line">            &#125;</div><div class="line">            .axis--x &#123;</div><div class="line">                display: none;</div><div class="line">            &#125;</div><div class="line">            .axis--y &#123;</div><div class="line">                display: none;</div><div class="line">            &#125;</div><div class="line">            .axis path,</div><div class="line">            .axis line &#123;</div><div class="line">                fill: none;</div><div class="line">                stroke: #000;</div><div class="line">                shape-rendering: crispEdges;</div><div class="line">            &#125;</div><div class="line">            .line &#123;</div><div class="line">                fill: none;</div><div class="line">                stroke: red;</div><div class="line">                stroke-width: 1.5px;</div><div class="line">            &#125;</div><div class="line">            .dot &#123;</div><div class="line">                fill: white;</div><div class="line">                stroke: red;</div><div class="line">                stroke-width: 1.5px;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://d3js.org/d3.v4.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"></div><div class="line">            var heartData = d3.range(-1200, 1200).map(function(i) &#123;</div><div class="line">                let x = i / 400;</div><div class="line">                let y = Math.sqrt(Math.abs(x)) - Math.sqrt(Math.cos(x)) * Math.cos(60 * x);</div><div class="line">                return y &amp;&amp; y &gt; -0.9 ? &#123;</div><div class="line">                    x: x,</div><div class="line">                    y: y</div><div class="line">                &#125; : null;</div><div class="line">            &#125;);</div><div class="line">            var lineData = heartData.map((item)=&gt;&#123;</div><div class="line">                return item?&#123;</div><div class="line">                    x:item.x,</div><div class="line">                    y:1</div><div class="line">                &#125;:null</div><div class="line">            &#125;)</div><div class="line">            var margin = &#123;</div><div class="line">                    top: 40,</div><div class="line">                    right: 40,</div><div class="line">                    bottom: 40,</div><div class="line">                    left: 40</div><div class="line">                &#125;,</div><div class="line">                width = 960 - margin.left - margin.right,</div><div class="line">                height = 500 - margin.top - margin.bottom;</div><div class="line"></div><div class="line">            var x = d3.scaleLinear()</div><div class="line">                .domain([-3, 3])</div><div class="line">                .range([0, width]);</div><div class="line"></div><div class="line">            var y = d3.scaleLinear()</div><div class="line">                .domain([-1, 2])</div><div class="line">                .range([height, 0]);</div><div class="line"></div><div class="line">            var line = d3.line()</div><div class="line">                 .defined(function(d) &#123; return d; &#125;)</div><div class="line">                .x(function(d) &#123;</div><div class="line">                    return x(d.x)</div><div class="line">                &#125;)</div><div class="line">                .y(function(d) &#123;</div><div class="line">                    return y(d.y)</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">            var svg = d3.select("body").append("svg")</div><div class="line">                .datum(lineData)</div><div class="line">                .attr("width", width + margin.left + margin.right)</div><div class="line">                .attr("height", height + margin.top + margin.bottom)</div><div class="line">                .append("g")</div><div class="line">                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");</div><div class="line"></div><div class="line">            svg.append("g")</div><div class="line">                .attr("class", "axis axis--x")</div><div class="line">                .attr("transform", "translate(0," + height + ")")</div><div class="line">                .call(d3.axisBottom().scale(x));</div><div class="line"></div><div class="line">            svg.append("g")</div><div class="line">                .attr("class", "axis axis--y")</div><div class="line">                .call(d3.axisLeft().scale(y));</div><div class="line"></div><div class="line">            svg.append("path")</div><div class="line">                .attr("class", "line")</div><div class="line">                .attr("translate", "all 0.5 ease-in-out")</div><div class="line">                .attr("d", line)</div><div class="line">                .transition()</div><div class="line">                    .delay(1000)</div><div class="line">                    .duration(800)</div><div class="line">                    .attr("d", line(heartData));</div><div class="line"></div><div class="line">            // setTimeout(() =&gt; &#123;</div><div class="line">            //     svg.selectAll(".dot").remove()</div><div class="line">            //         .data(heartData.filter(function(d, index) &#123;</div><div class="line">            //             return index % 54 == 0 &amp;&amp; d;</div><div class="line">            //         &#125;))</div><div class="line">            //         .enter().append("circle")</div><div class="line">            //         .attr("class", "dot")</div><div class="line">            //         .attr("cx", line.x())</div><div class="line">            //         .attr("cy", line.y())</div><div class="line">            //         .attr("r", 3.5);</div><div class="line">            // &#125;, 2000)</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">disqus_shortnamedsa</div><div class="line">disqus_shortnamedsadsa</div><div class="line">disqus_shortnamedsa</div><div class="line">dsa</div></pre></td></tr></table></figure>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://caolinjian.github.io/blog/2017/03/08/用D3js画爱心/index.html" data-title="用D3js画爱心" data-url="http://caolinjian.github.io/blog/2017/03/08/用D3js画爱心/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"caolinjian"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/blog/js/bundle.js?2356833', function() {
+    });
+  }
+</script>
+
+</body>
+</html>
