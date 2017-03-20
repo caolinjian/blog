@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>js数据结构和算法——图和图算法 | Ph0eN_X&#39;s Localhost</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,前端开发,前端工程师,frontend,nodejs,javascript,css" />
+  
+
+  <meta name="description" content="图的定义图由边的集合及顶点的集合组成。边由顶点 对 (v1,v2) 定义,v1 和 v2 分别是图中的两个顶点。顶点也有权重,也称为成本。如果一个 图的顶点对是有序的,则可以称之为有向图。在对有向图中的顶点对排序后,便可以在两 个顶点之间绘制一个箭头。有向图表明了顶点的流向。计算机程序中用来表明计算方向的 流程图就是一个有向图的例子。
+有向图
+无向图如果图是无序的,则称之为无序图
+构建图图的实际信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js数据结构和算法——图和图算法">
+<meta property="og:url" content="http://caolinjian.github.io/blog/2017/03/20/js数据结构和算法——图和图算法/index.html">
+<meta property="og:site_name" content="Ph0eN_X's Localhost">
+<meta property="og:description" content="图的定义图由边的集合及顶点的集合组成。边由顶点 对 (v1,v2) 定义,v1 和 v2 分别是图中的两个顶点。顶点也有权重,也称为成本。如果一个 图的顶点对是有序的,则可以称之为有向图。在对有向图中的顶点对排序后,便可以在两 个顶点之间绘制一个箭头。有向图表明了顶点的流向。计算机程序中用来表明计算方向的 流程图就是一个有向图的例子。
+有向图
+无向图如果图是无序的,则称之为无序图
+构建图图的实际信">
+<meta property="og:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/Directedgraph.png">
+<meta property="og:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/无向.png">
+<meta property="og:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/create.png">
+<meta property="og:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/深度优先搜索.png">
+<meta property="og:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/广度优先搜索.png">
+<meta property="og:updated_time" content="2017-03-20T14:22:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js数据结构和算法——图和图算法">
+<meta name="twitter:description" content="图的定义图由边的集合及顶点的集合组成。边由顶点 对 (v1,v2) 定义,v1 和 v2 分别是图中的两个顶点。顶点也有权重,也称为成本。如果一个 图的顶点对是有序的,则可以称之为有向图。在对有向图中的顶点对排序后,便可以在两 个顶点之间绘制一个箭头。有向图表明了顶点的流向。计算机程序中用来表明计算方向的 流程图就是一个有向图的例子。
+有向图
+无向图如果图是无序的,则称之为无序图
+构建图图的实际信">
+<meta name="twitter:image" content="http://caolinjian.github.io/blog/blog/2017/03/20/js数据结构和算法——图和图算法/Directedgraph.png">
+
+  
+
+  
+    <link rel="icon" href="/blog/favicon.png">
+  
+
+  <link href="/blog/css/styles.css?v=eaf5ab1e" rel="stylesheet">
+
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93223334-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+
+  
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1254595041'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1254595041' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+  <script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'afcea90a8b7d8e63']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">菜单</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/blog/">
+      <span class="toolbox-entry-text">菜单</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/blog/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#图的定义"><span class="toc-number">1.</span> <span class="toc-text">图的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有向图"><span class="toc-number">1.1.</span> <span class="toc-text">有向图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无向图"><span class="toc-number">1.2.</span> <span class="toc-text">无向图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建图"><span class="toc-number">1.3.</span> <span class="toc-text">构建图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度优先搜索"><span class="toc-number">2.</span> <span class="toc-text">深度优先搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广度优先搜索"><span class="toc-number">3.</span> <span class="toc-text">广度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找最短路径"><span class="toc-number">3.1.</span> <span class="toc-text">查找最短路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拓扑排序"><span class="toc-number">4.</span> <span class="toc-text">拓扑排序</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-js数据结构和算法——图和图算法" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">js数据结构和算法——图和图算法</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Cao LinJian</span>
+        </span>
+      
+
+      
+
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h2><p>图由边的集合及顶点的集合组成。边由顶点 对 (v1,v2) 定义,v1 和 v2 分别是图中的两个顶点。顶点也有权重,也称为成本。如果一个 图的顶点对是有序的,则可以称之为有向图。在对有向图中的顶点对排序后,便可以在两 个顶点之间绘制一个箭头。有向图表明了顶点的流向。计算机程序中用来表明计算方向的 流程图就是一个有向图的例子。</p>
+<h3 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h3><p><img src="/blog/2017/03/20/js数据结构和算法——图和图算法/Directedgraph.png" alt="有向图"></p>
+<h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>如果图是无序的,则称之为无序图<br><img src="/blog/2017/03/20/js数据结构和算法——图和图算法/无向.png" alt="无向图"></p>
+<h3 id="构建图"><a href="#构建图" class="headerlink" title="构建图"></a>构建图</h3><p>图的实际信息都保存在边上面,因为它们描述了图的结构。我们将表示图的边的方法称为邻接表或者邻接表数组。这种方法将边存储为由顶点的相邻顶点列表构成的数组,并以此顶点作为索引。使用这种方案,当我们在程序中引用一个顶 点时,可以高效地访问与这个顶点相连的所有顶点的列表。比如,如果顶点 2 与顶点 0、 1、3、4 相连,并且它存储在数组中索引为 2 的位置,那么,访问这个元素,我们可以访 问到索引为 2 的位置处由顶点 0、1、3、4 组成的数组。</p>
+<p><img src="/blog/2017/03/20/js数据结构和算法——图和图算法/create.png" alt="构建图"></p>
+<p>确定了如何在代码中表示图之后,构建一个表示图的类就很容易了。下面是第一个 Graph类的定义:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Graph</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.vertices = v; <span class="comment">// 顶点数</span></div><div class="line">    <span class="keyword">this</span>.edges = <span class="number">0</span>; <span class="comment">// 边数</span></div><div class="line">    <span class="keyword">this</span>.adj = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.adj[i] = [];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.addEdge = addEdge;</div><div class="line">    <span class="keyword">this</span>.showGraph = showGraph;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEdge</span>(<span class="params">v, w</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.adj[v].push(w);</div><div class="line">    <span class="keyword">this</span>.adj[w].push(v);</div><div class="line">    <span class="keyword">this</span>.edges++;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGraph</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">let</span> str = i + <span class="string">'-&gt;'</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>.vertices; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.adj[i][j] !== <span class="literal">undefined</span>) &#123;</div><div class="line">                str += <span class="keyword">this</span>.adj[i][j] + <span class="string">' '</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(str);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">g = <span class="keyword">new</span> Graph(<span class="number">5</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">2</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">3</span>);</div><div class="line">g.addEdge(<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">g.showGraph();</div><div class="line">====输出===</div><div class="line"><span class="number">0</span>-&gt;<span class="number">1</span> <span class="number">2</span></div><div class="line"><span class="number">1</span>-&gt;<span class="number">0</span> <span class="number">3</span></div><div class="line"><span class="number">2</span>-&gt;<span class="number">0</span> <span class="number">4</span></div><div class="line"><span class="number">3</span>-&gt;<span class="number">1</span></div><div class="line"><span class="number">4</span>-&gt;<span class="number">2</span></div></pre></td></tr></table></figure>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p>深度优先搜索包括从一条路径的起始顶点开始追溯,直到到达最后一个顶点,然后回溯, 继续追溯下一条路径,直到到达最后的顶点,如此往复,直到没有路径为止。这不是在搜 索特定的路径,而是通过搜索来查看在图中有哪些路径可以选择。</p>
+<p><img src="/blog/2017/03/20/js数据结构和算法——图和图算法/深度优先搜索.png" alt="深度优先搜索"></p>
+<p>为Graph类添加一个数组,用来存储已访问过的顶点,将它所有元 素的值全部初始化为 false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.marked = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">    <span class="keyword">this</span>.marked[i] = <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们可以开始深度优先搜索函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.marked[v] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.adj[v] !== <span class="literal">undefined</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'Visisted vertex: '</span> + v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">            <span class="keyword">this</span>.dfs(w);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完整代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Graph</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.vertices = v; <span class="comment">// 顶点数</span></div><div class="line">    <span class="keyword">this</span>.edges = <span class="number">0</span>; <span class="comment">// 边数</span></div><div class="line">    <span class="keyword">this</span>.adj = [];</div><div class="line">    <span class="keyword">this</span>.marked = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.adj[i] = [];</div><div class="line">        <span class="keyword">this</span>.marked[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.addEdge = addEdge;</div><div class="line">    <span class="keyword">this</span>.showGraph = showGraph;</div><div class="line">    <span class="keyword">this</span>.dfs = dfs;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEdge</span>(<span class="params">v, w</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.adj[v].push(w);</div><div class="line">    <span class="keyword">this</span>.adj[w].push(v);</div><div class="line">    <span class="keyword">this</span>.edges++;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGraph</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">let</span> str = i + <span class="string">'-&gt;'</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>.vertices; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.adj[i][j] !== <span class="literal">undefined</span>) &#123;</div><div class="line">                str += <span class="keyword">this</span>.adj[i][j] + <span class="string">' '</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(str);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.marked[v] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.adj[v] !== <span class="literal">undefined</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'Visisted vertex: '</span> + v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">            <span class="keyword">this</span>.dfs(w);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">g = <span class="keyword">new</span> Graph(<span class="number">5</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">2</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">3</span>);</div><div class="line">g.addEdge(<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">g.dfs(<span class="number">0</span>);</div><div class="line">====输出===</div><div class="line">Visited vertex: <span class="number">0</span></div><div class="line">Visited vertex: <span class="number">1</span></div><div class="line">Visited vertex: <span class="number">3</span></div><div class="line">Visited vertex: <span class="number">2</span></div><div class="line">Visited vertex: <span class="number">4</span></div></pre></td></tr></table></figure>
+<h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>广度优先搜索从第一个顶点开始,尝试访问尽可能靠近它的顶点。本质上,这种搜索在图 上是逐层移动的,首先检查最靠近第一个顶点的层,再逐渐向下移动到离起始顶点最远的 层。</p>
+<p><img src="/blog/2017/03/20/js数据结构和算法——图和图算法/广度优先搜索.png" alt="广度优先搜索"></p>
+<p>广度优先搜索算法使用了抽象的队列而不是数组来对已访问过的顶点进行排序。其算法的 工作原理如下:</p>
+<ol>
+<li>查找与当前顶点相邻的未访问顶点,将其添加到已访问顶点列表及队列中;</li>
+<li>从图中取出下一个顶点 v,添加到已访问的顶点列表;</li>
+<li>将所有与 v 相邻的未访问顶点添加到队列。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bfs</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> queue = [];</div><div class="line">    <span class="keyword">this</span>.marked[s] = <span class="literal">true</span>;</div><div class="line">    queue.push(s);</div><div class="line">    <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">let</span> v = queue.shift();</div><div class="line">        <span class="keyword">if</span> (v !== <span class="literal">undefined</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"Visisted vertex: "</span> + v);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">                <span class="keyword">this</span>.marked[w] = <span class="literal">true</span>;</div><div class="line">                queue.push(w);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试下代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">g = <span class="keyword">new</span> Graph(<span class="number">5</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">2</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">3</span>);</div><div class="line">g.addEdge(<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">g.bfs(<span class="number">0</span>);</div><div class="line">====输出===</div><div class="line">Visited vertex: <span class="number">0</span></div><div class="line">Visited vertex: <span class="number">1</span></div><div class="line">Visited vertex: <span class="number">2</span></div><div class="line">Visited vertex: <span class="number">3</span></div><div class="line">Visited vertex: <span class="number">4</span></div></pre></td></tr></table></figure>
+<h3 id="查找最短路径"><a href="#查找最短路径" class="headerlink" title="查找最短路径"></a>查找最短路径</h3><p>在执行广度优先搜索时,会自动查找从一个顶点到另一个相连顶点的最短路径。例如,要 查找从顶点 A 到顶点 D 的最短路径,我们首先会查找从 A 到 D 是否有任何一条单边路径, 接着查找两条边的路径,以此类推。这正是广度优先搜索的搜索过程,因此我们可以轻松 地修改广度优先搜索算法,找出最短路径。</p>
+<p>首先,需要一个数组来保存从一个顶点到下一个顶点的所有边。我们将这个数组命名为 edgeTo。因为从始至终使用的都是广度优先搜索函数,所以每次都会遇到一个没有标记的 顶点,除了对它进行标记外,还会从邻接列表中我们正在探索的那个顶点添加一条边到这 个顶点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Graph类新增</span></div><div class="line"><span class="keyword">this</span>.edgeTo=[];</div><div class="line"></div><div class="line"><span class="comment">// 广度优先搜索</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bfs</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> queue = [];</div><div class="line">    <span class="keyword">this</span>.marked[s] = <span class="literal">true</span>;</div><div class="line">    queue.push(s);</div><div class="line">    <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">let</span> v = queue.shift();</div><div class="line">        <span class="keyword">if</span> (v !== <span class="literal">undefined</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"Visisted vertex: "</span> + v);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">                <span class="keyword">this</span>.edgeTo[w] = v; <span class="comment">//新增</span></div><div class="line">                <span class="keyword">this</span>.marked[w] = <span class="literal">true</span>;</div><div class="line">                queue.push(w);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再添加pathTo函数，完整代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Graph</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.vertices = v;</div><div class="line">    <span class="keyword">this</span>.edges = <span class="number">0</span>;</div><div class="line">    <span class="keyword">this</span>.adj = [];</div><div class="line">    <span class="keyword">this</span>.edgeTo = [];</div><div class="line">    <span class="keyword">this</span>.marked = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.adj[i] = [];</div><div class="line">        <span class="keyword">this</span>.marked[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.addEdge = addEdge;</div><div class="line">    <span class="keyword">this</span>.showGraph = showGraph;</div><div class="line">    <span class="keyword">this</span>.dfs = dfs;</div><div class="line">    <span class="keyword">this</span>.bfs = bfs;</div><div class="line">    <span class="keyword">this</span>.pathTo = pathTo;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEdge</span>(<span class="params">v, w</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.adj[v].push(w);</div><div class="line">    <span class="keyword">this</span>.adj[w].push(v);</div><div class="line">    <span class="keyword">this</span>.edges++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGraph</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">let</span> str = i + <span class="string">'-&gt;'</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>.vertices; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.adj[i][j] !== <span class="literal">undefined</span>) &#123;</div><div class="line">                str += <span class="keyword">this</span>.adj[i][j] + <span class="string">' '</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(str);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 深度优先搜索 depthFirst</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dfs</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.marked[v] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.adj[v] !== <span class="literal">undefined</span>) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'Visisted vertex: '</span> + v);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">            <span class="keyword">this</span>.dfs(w);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 广度优先搜索</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bfs</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> queue = [];</div><div class="line">    <span class="keyword">this</span>.marked[s] = <span class="literal">true</span>;</div><div class="line">    queue.push(s);</div><div class="line">    <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">let</span> v = queue.shift();</div><div class="line">        <span class="keyword">if</span> (v !== <span class="literal">undefined</span>) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"Visisted vertex: "</span> + v);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[w]) &#123;</div><div class="line">                <span class="keyword">this</span>.edgeTo[w] = v;</div><div class="line">                <span class="keyword">this</span>.marked[w] = <span class="literal">true</span>;</div><div class="line">                queue.push(w);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pathTo</span>(<span class="params">t, v</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">this</span>.marked[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.bfs(t);</div><div class="line">    <span class="keyword">let</span> source = t;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.marked[v]) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">undefined</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> path = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = v; i != source; i = <span class="keyword">this</span>.edgeTo[i]) &#123;</div><div class="line">        path.unshift(i);</div><div class="line">    &#125;</div><div class="line">    path.unshift(source);</div><div class="line">    <span class="keyword">let</span> str = <span class="string">''</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> path) &#123;</div><div class="line">        <span class="keyword">if</span> (i &lt; path.length - <span class="number">1</span>) &#123;</div><div class="line">            str += path[i] + <span class="string">'-&gt;'</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            str += path[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(str);</div><div class="line">    <span class="keyword">return</span> path;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">g = <span class="keyword">new</span> Graph(<span class="number">5</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">g.addEdge(<span class="number">0</span>,<span class="number">2</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">3</span>);</div><div class="line">g.addEdge(<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">g.pathTo(<span class="number">0</span>,<span class="number">4</span>);</div><div class="line">====输出===</div><div class="line">Visited vertex: <span class="number">0</span></div><div class="line">Visited vertex: <span class="number">1</span></div><div class="line">Visited vertex: <span class="number">2</span></div><div class="line">Visited vertex: <span class="number">3</span></div><div class="line">Visited vertex: <span class="number">4</span></div><div class="line"><span class="number">0</span>-&gt;<span class="number">2</span>-&gt;<span class="number">4</span></div><div class="line"></div><div class="line">g.pathTo(<span class="number">1</span>,<span class="number">4</span>);</div><div class="line">====输出===</div><div class="line">Visited vertex: <span class="number">1</span></div><div class="line">Visited vertex: <span class="number">0</span></div><div class="line">Visited vertex: <span class="number">3</span></div><div class="line">Visited vertex: <span class="number">2</span></div><div class="line">Visited vertex: <span class="number">4</span></div><div class="line"><span class="number">1</span>-&gt;<span class="number">0</span>-&gt;<span class="number">2</span>-&gt;<span class="number">4</span></div></pre></td></tr></table></figure></p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>拓扑排序会对有向图的所有顶点进行排序,使有向边从前面的顶点指向后面的顶点。</p>
+<p>拓扑排序算法与BFS类似，不同的是，拓扑排序算法不会立即输出已访问的顶点，而是访问当前顶点邻接表中的所有相邻顶点，直到这个列表穷尽时，才会将当前顶点压入栈中。拓扑排序算法被拆分为两个函数，第一个函数是topSort()，用来设置排序进程并调用一个辅助函数topSortHelper()，然后显示排序好的顶点列表</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">topSort</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> stack = [];</div><div class="line">    <span class="keyword">let</span> visited = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        visited[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.vertices; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (visited[i] == <span class="literal">false</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.topSortHelper(i, visited, stack);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = stack.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.vertexList[stack[i]])</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">topSortHelper</span>(<span class="params">v, visited, stack</span>) </span>&#123;</div><div class="line">    visited[v] = <span class="literal">true</span>;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.adj[v].forEach(<span class="function">(<span class="params">w</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (!visited[w]) &#123;</div><div class="line">            <span class="keyword">this</span>.topSortHelper(w, visited, stack)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    stack.push(v)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">g = <span class="keyword">new</span> Graph(<span class="number">6</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">g.addEdge(<span class="number">2</span>,<span class="number">5</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">3</span>);</div><div class="line">g.addEdge(<span class="number">1</span>,<span class="number">4</span>);</div><div class="line">g.addEdge(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">g.vertexList = [<span class="string">"CS1"</span>, <span class="string">"CS2"</span>, <span class="string">"Data Structures"</span>,</div><div class="line">                     <span class="string">"Assembly Language"</span>, <span class="string">"Operating Systems"</span>,</div><div class="line">                     <span class="string">"Algorithms"</span>];</div><div class="line">g.topSort();</div><div class="line"></div><div class="line">====输出====</div><div class="line">CS1</div><div class="line">CS2</div><div class="line">Operating Systems</div><div class="line">Assembly Language</div><div class="line">Data Structures</div><div class="line">Algorithms</div></pre></td></tr></table></figure>
+<p>完整代码<a href="https://github.com/caolinjian/javascript-data_structures-algorithm/blob/master/Graph.js" target="_blank" rel="external">https://github.com/caolinjian/javascript-data_structures-algorithm/blob/master/Graph.js</a><br>参考资料：《数据结构与算法JavaScript描述》</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/blog/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://caolinjian.github.io/blog/2017/03/20/js数据结构和算法——图和图算法/index.html" data-title="js数据结构和算法——图和图算法" data-url="http://caolinjian.github.io/blog/2017/03/20/js数据结构和算法——图和图算法/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"caolinjian"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/blog/js/bundle.js?2356833', function() {
+    });
+  }
+</script>
+
+</body>
+</html>
